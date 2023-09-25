@@ -1,20 +1,21 @@
 import java.time.LocalDate;
 
-public class Automovil extends ItemAlquiler{
+public class Automovil extends Producto {
     //Atributos
     private String marca;
     private int kms;
     private String patente;
     private String motor;
 
+
     //Constructor
 
-    public Automovil(LocalDate fechaInicio, LocalDate fechaFin, boolean disponible, String marca, int kms, String patente, String motor) {
-        super(fechaInicio, fechaFin, disponible);
+    public Automovil(boolean disponible, String marca, int kms, String patente, String motor) {
+        super(disponible);
         this.marca = marca;
         this.kms = kms;
         this.patente = patente;
-        this.motor=motor;
+        this.motor = motor;
     }
 
     //Metodos getters and setters
@@ -51,10 +52,16 @@ public class Automovil extends ItemAlquiler{
         this.motor = motor;
     }
 
-    //Automovil disponible
-
     @Override
     public boolean isDisponible() {
-        return this.disponible;
+        return super.isDisponible();
+    }
+    @Override
+    public void setDisponible(boolean disponible){
+        this.disponible=disponible;
+    }
+    //Imprimir
+    public String toString(){
+        return "Marca: "+getMarca()+"Patente: "+getPatente()+"Motor: "+getMotor()+"Kms: "+getKms();
     }
 }

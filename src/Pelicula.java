@@ -1,19 +1,40 @@
 import java.time.LocalDate;
 
-public class Pelicula extends ItemAlquiler{
+public class Pelicula extends Producto{
     //Atributos
+    private String titulo;
+    private String genero;
     private String infoFilm;
     private int cantCopias;
 
     //Constructor
 
-    public Pelicula(LocalDate fechaInicio, LocalDate fechaFin, boolean disponible, String infoFilm, int cantCopia) {
-        super(fechaInicio, fechaFin, disponible);
+    public Pelicula(boolean disponible, String titulo, String genero, String infoFilm, int cantCopia) {
+        super(disponible);
+        this.titulo=titulo;
+        this.genero=genero;
         this.infoFilm = infoFilm;
         this.cantCopias = cantCopias;
     }
 
     //Metodos getters and setters
+
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
 
     public String getInfoFilm() {
         return infoFilm;
@@ -31,10 +52,14 @@ public class Pelicula extends ItemAlquiler{
         this.cantCopias = cantCopias;
     }
 
-
     //Se puede alquilar
     @Override
     public boolean isDisponible(){
         return this.cantCopias>0;
+    }
+
+    //Para imprimir
+    public String toString(){
+        return "Titulo: "+ getTitulo()+" - Genero: "+getGenero()+" - Informacion filmografica: "+getInfoFilm()+" - Cantidad de copias"+getCantCopias();
     }
 }
